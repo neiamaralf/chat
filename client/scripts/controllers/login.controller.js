@@ -1,52 +1,25 @@
 import { _ } from 'meteor/underscore';
-
 import { Accounts } from 'meteor/accounts-base';
-
 import { Controller } from 'angular-ecmascript/module-helpers';
 
-
-
 export default class LoginCtrl extends Controller {
-
     login() {
-
         if (_.isEmpty(this.phone)) return;
-
-
-
         const confirmPopup = this.$ionicPopup.confirm({
-
             title: 'Number confirmation',
-
             template: '<div>' + this.phone + '</div><div>Is your phone number above correct?</div>',
-
             cssClass: 'text-center',
-
             okText: 'Yes',
-
             okType: 'button-positive button-clear',
-
             cancelText: 'edit',
-
             cancelType: 'button-dark button-clear'
-
         });
 
-
-
         confirmPopup.then((res) => {
-
             if (!res) return;
-
-
-
             this.$ionicLoading.show({
-
                 template: 'Sending verification code...'
-
             });
-
-
 
             Accounts.requestPhoneVerification(this.phone, (err) => {
 

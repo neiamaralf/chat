@@ -19,14 +19,16 @@ import { Meteor } from 'meteor/meteor';
 
 // Modules
 import ChatsCtrl from '../controllers/chats.controller';
-import RoutesConfig from '../routes';
+import SettingsCtrl from '../controllers/settings.controller';
 import CalendarFilter from '../filters/calendar.filter';
 import ChatCtrl from '../controllers/chat.controller';
 import LoginCtrl from '../controllers/login.controller';
 import ProfileCtrl from '../controllers/profile.controller';
 import ConfirmationCtrl from '../controllers/confirmation.controller';
 import InputDirective from '../directives/input.directive';
+//import Routes from '../routes';
 import Routes from '../routes';
+
 const App = 'Whatsapp';
 
 
@@ -45,16 +47,16 @@ Angular.module(App, [
 
 new Loader(App)
     .load(ChatsCtrl)
-    .load(RoutesConfig)
     .load(CalendarFilter)
     .load(ChatCtrl)
     .load(LoginCtrl)
-    .load(ProfileCtrl)
     .load(InputDirective)
+    .load(ConfirmationCtrl)
     .load(Routes)
-    .load(ConfirmationCtrl);
+    .load(SettingsCtrl)
+    .load(ProfileCtrl);
 // Startup
-
+//.load(ProfileCtrl)
 if (Meteor.isCordova) {
 
     Angular.element(document).on('deviceready', onReady);
