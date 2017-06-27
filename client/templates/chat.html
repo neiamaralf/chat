@@ -6,8 +6,8 @@
         <div class="message-list">
             <div ng-repeat="message in chat.messages" class="message-wrapper">
                 <div class="message" ng-class="message.userId === $root.currentUser._id ? 'message-mine' : 'message-other'">
-                    <div class="message-text">{{ message.text+'-'+message.userName }}</div>
-                    <span class="message-timestamp">{{ message.timestamp | amDateFormat: 'HH:mm'}}</span>
+                    <div class="message-text">{{ message.text }}</div>
+                    <span class="message-timestamp">{{ message.userName+'-'+message.timestamp | amDateFormat: 'HH:mm'}}</span>
                 </div>
             </div>
         </div>
