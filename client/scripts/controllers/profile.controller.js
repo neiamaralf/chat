@@ -5,7 +5,7 @@ export default class ProfileCtrl extends Controller {
     constructor() {
         super(...arguments);
         const profile = this.currentUser && this.currentUser.profile;
-        this.name = profile ? profile.name : '';
+        
     }
 
     updateName() {

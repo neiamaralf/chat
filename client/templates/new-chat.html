@@ -1,0 +1,14 @@
+<ion-view title="New Chat">
+    <ion-nav-buttons side="right">
+        <button ng-click="chat.hideNewChatModal()" class="button button-clear button-positive">Done</button>
+
+    </ion-nav-buttons>
+
+    <ion-content class="login">
+        <div class="list">
+            <input ng-model="chat.chatnome" type="text" placeholder="NOME DO CHAT" id="chatnome">
+            <button ng-click=chat.newChat()>criar</button>
+
+        </div>
+    </ion-content>
+</ion-view>

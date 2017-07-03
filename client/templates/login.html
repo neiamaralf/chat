@@ -1,29 +1,19 @@
-<ion-view title="Your phone number">
-
+<ion-view title="ENTRAR">
     <ion-nav-buttons side="right">
-
-        <button ng-click="logger.login()" ng-disabled="!logger.phone || logger.phone.length === 0" class="button button-clear button-positive">Done</button>
-
+        <button ng-click="logger.registrar()" class="button button-clear button-positive">Cadastrar</button>
+        <button ng-click="logger.login()" ng-disabled="!logger.email || logger.email.length === 0||!logger.senha || logger.email.senha === 0" class="button button-clear button-positive">Login</button>
     </ion-nav-buttons>
-
     <ion-content class="login">
-
         <div class="text-center instructions">
-
-            Please confirm your country code and enter your phone number
-
+            Digite seu email e senha
         </div>
-
         <div class="list">
-
             <label class="item item-input">
-
-        <input ng-model="logger.phone" on-return="logger.login()" type="text" placeholder="Your phone number">
-
-      </label>
-
+            <input ng-model="logger.email"  type="email" placeholder="Email">
+           </label>
+            <label class="item item-input">
+            <input ng-model="logger.senha" on-return="logger.login()" type="text" placeholder="Senha">
+           </label>
         </div>
-
     </ion-content>
-
 </ion-view>

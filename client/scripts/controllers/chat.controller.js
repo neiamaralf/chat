@@ -11,9 +11,14 @@ export default class ChatCtrl extends Controller {
         this.chatId = this.$stateParams.chatId;
         this.isIOS = Ionic.Platform.isWebView() && Ionic.Platform.isIOS();
         this.isCordova = Meteor.isCordova;
+        Chats.update(this.chatId, { $addToSet: { userIds: Meteor.user().username } });
+        console.log(Chats.find({ _id: this.chatId }, { userIds: {} }).fetch());
         this.helpers({
             messages() {
                 return Messages.find({ chatId: this.chatId });
+            },
+            usuarios() {
+                return Chats.find({ _id: this.chatId }, { userIds: {} });
             },
             data() {
                 return Chats.findOne(this.chatId);
@@ -21,6 +26,11 @@ export default class ChatCtrl extends Controller {
 
         });
         this.autoScroll();
+    }
+
+    sair() {
+        Chats.update(this.chatId, { $pull: { userIds: Meteor.user().username } });
+        this.$state.go('tab.chats');
     }
 
     sendMessage() {
@@ -71,4 +81,4 @@ export default class ChatCtrl extends Controller {
 }
 
 ChatCtrl.$name = 'ChatCtrl';
-ChatCtrl.$inject = ['$stateParams', '$timeout', '$ionicScrollDelegate'];
+ChatCtrl.$inject = ['$state', '$stateParams', '$timeout', '$ionicScrollDelegate'];

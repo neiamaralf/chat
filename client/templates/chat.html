@@ -1,13 +1,34 @@
-<ion-view title="{{chat.data.name}}">
+<ion-view title="{{chat.data.name}}" hide-back-button="true">
     <ion-nav-buttons side="right">
         <button class="button button-clear"><img class="header-picture" ng-src="{{chat.data.picture}}"></button>
+
+        <button ng-click="chat.sair()" class="button button-clear button-positive button-icon icon ion-log-out"></button>
+
+        <button class="button button-clear"><ion-icon name="arrow-left"></ion-icon></button>
     </ion-nav-buttons>
     <ion-content class="chat" delegate-handle="chatScroll">
+        <ion-list ng-repeat="usuario in chat.usuarios" style="padding:0;float:left;height:100%;background-color:#ffffff;width:20%">
+
+            <ion-item class="message-text" ng-repeat="usrname in usuario.userIds" style="text-align: left">
+                <div style="float:left">
+                    {{usrname}}
+                </div>
+            </ion-item>
+        </ion-list>
         <div class="message-list">
+
+
             <div ng-repeat="message in chat.messages" class="message-wrapper">
+
                 <div class="message" ng-class="message.userId === $root.currentUser._id ? 'message-mine' : 'message-other'">
+                    <div class="message-text" style="text-align: left">
+                        <b>{{message.user.username}}</b>
+                        <div style="float:right">
+                            <button ng-click="chat.sendMessage()" class="button button-clear  icon-right button-icon button-positive icon ion-chevron-down"></button>
+                        </div>
+                    </div>
                     <div class="message-text">{{ message.text }}</div>
-                    <span class="message-timestamp">{{ message.userName+'-'+message.timestamp | amDateFormat: 'HH:mm'}}</span>
+                    <span class="message-timestamp">{{ message.timestamp | amDateFormat: 'HH:mm'}}</span>
                 </div>
             </div>
         </div>

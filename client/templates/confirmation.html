@@ -1,36 +1,18 @@
-<ion-view title="{{ confirmation.phone }}">
+<ion-view title="REGISTRAR">
 
     <ion-nav-buttons side="right">
-
-        <button ng-click="confirmation.confirm()" ng-disabled="!confirmation.code || confirmation.code.length === 0" class="button button-clear button-positive">Done</button>
-
+        <button ng-click="confirmation.confirm()" ng-disabled="!confirmation.nome||confirmation.nome.length === 0||!confirmation.email||confirmation.email.length === 0||!confirmation.password||confirmation.password.length === 0||!confirmation.password2||confirmation.password2.length === 0||(confirmation.password!=confirmation.password2)"
+            class="button button-clear button-positive">Cadastrar</button>
     </ion-nav-buttons>
-
-
-
     <ion-content>
-
         <div class="text-center padding">
-
-            We have sent you an SMS with a code to the number above
-
+            Complete os campos abaixo com seus dados para entrar no chat.
         </div>
-
-        <div class="text-center padding">
-
-            To complete your phone number verification WhatsApp, please enter the 4-digit activation code.
-
-        </div>
-
-
-
         <div class="list padding-top">
-
-            <label class="item item-input">
-
-        <input ng-model="confirmation.code" on-return="confirmation.confirm()" type="text" placeholder="Code">
-
-      </label>
+            <input ng-model="confirmation.nome" type="text" placeholder="Nome">
+            <input ng-model="confirmation.email" type="text" placeholder="Email">
+            <input ng-model="confirmation.password" type="password" placeholder="Senha">
+            <input ng-model="confirmation.password2" type="password" on-return="confirmation.confirm()" placeholder="Confirmação de senha">
 
         </div>
 

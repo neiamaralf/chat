@@ -25,4 +25,4 @@ launch-screen
 fourseven:scss
 check
 npm-bcrypt@0.8.7
-mys:accounts-phone
+accounts-password

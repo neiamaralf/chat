@@ -6,15 +6,18 @@ import { Controller } from 'angular-ecmascript/module-helpers';
 export default class ConfirmationCtrl extends Controller {
     constructor() {
         super(...arguments);
-        this.phone = this.$state.params.phone;
     }
 
     confirm() {
-        if (_.isEmpty(this.code)) return;
-        Accounts.verifyPhone(this.phone, this.code, (err) => {
+        Accounts.createUser({
+            username: this.nome,
+            email: this.email,
+            password: this.password
+        }, (err) => {
             if (err) return this.handleError(err);
-            this.$state.go('profile');
+            this.$state.go('tab.chats', { nome: this.nome })
         });
+
     }
 
     handleError(err) {

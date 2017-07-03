@@ -10,6 +10,8 @@ import profileTemplateUrl from '../templates/profile.html';
 import settingsTemplateUrl from '../templates/settings.html';
 import tabsTemplateUrl from '../templates/tabs.html';
 
+import newChatTemplateUrl from '../templates/new-chat.html';
+
 class RoutesConfig extends Config {
     constructor() {
         super(...arguments);
@@ -66,6 +68,11 @@ class RoutesConfig extends Config {
                 resolve: {
                     user: this.isAuthorized
                 }
+            })
+            .state('new-chat', {
+                url: '/new-chat',
+                templateUrl: newChatTemplateUrl,
+                controller: 'NewChatCtrl as chat',
             })
             .state('tab.settings', {
                 url: '/settings',

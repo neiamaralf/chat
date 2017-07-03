@@ -26,13 +26,12 @@ import LoginCtrl from '../controllers/login.controller';
 import ProfileCtrl from '../controllers/profile.controller';
 import ConfirmationCtrl from '../controllers/confirmation.controller';
 import InputDirective from '../directives/input.directive';
+import NewChatCtrl from '../controllers/new-chat.controller';
+
 //import Routes from '../routes';
 import Routes from '../routes';
 
 const App = 'Whatsapp';
-
-
-
 // App
 
 Angular.module(App, [
@@ -54,7 +53,9 @@ new Loader(App)
     .load(ConfirmationCtrl)
     .load(Routes)
     .load(SettingsCtrl)
-    .load(ProfileCtrl);
+    .load(ProfileCtrl)
+    // .load(NewChatService)
+    .load(NewChatCtrl);
 // Startup
 //.load(ProfileCtrl)
 if (Meteor.isCordova) {
