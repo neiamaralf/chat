@@ -22,8 +22,8 @@ export default class LoginCtrl extends Controller {
     handleError(err) {
         this.$log.error('Login error ', err);
         this.$ionicPopup.alert({
-            title: err.reason || 'Login failed',
-            template: 'Please try again',
+            title: err.reason || 'Falha no login',
+            template: 'Tente novamente',
             okType: 'button-positive button-clear'
         });
     }

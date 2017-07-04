@@ -6,6 +6,7 @@ import NewChat from '../services/new-chat.service';
 export default class ChatsCtrl extends Controller {
     constructor() {
         super(...arguments);
+        Meteor.subscribe('chats');
         this.nome = this.$state.params.nome;
         this.helpers({
             data() {
@@ -16,7 +17,6 @@ export default class ChatsCtrl extends Controller {
 
     showNewChatModal() {
         this.$state.go('new-chat');
-        // this.NewChat.showModal();
     }
 
     remove(chat) {

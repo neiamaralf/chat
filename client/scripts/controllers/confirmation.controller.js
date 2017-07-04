@@ -21,10 +21,10 @@ export default class ConfirmationCtrl extends Controller {
     }
 
     handleError(err) {
-        this.$log.error('Confirmation error ', err);
+        this.$log.error('Erro ao criar novo usuário ', err);
         this.$ionicPopup.alert({
-            title: err.reason || 'Confirmation failed',
-            template: 'Please try again',
+            title: err.reason || 'Criação de novo usúario falhou',
+            template: 'Tente novamente',
             okType: 'button-positive button-clear'
         });
     }

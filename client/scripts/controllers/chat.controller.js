@@ -8,10 +8,15 @@ import { Chats, Messages } from '../../../lib/collections';
 export default class ChatCtrl extends Controller {
     constructor() {
         super(...arguments);
+
+        Meteor.subscribe('messages');
         this.chatId = this.$stateParams.chatId;
         this.isIOS = Ionic.Platform.isWebView() && Ionic.Platform.isIOS();
         this.isCordova = Meteor.isCordova;
-        Chats.update(this.chatId, { $addToSet: { userIds: Meteor.user().username } });
+        this.callMethod('entrarChat', {
+            usrName: Meteor.user().username,
+            chatId: this.chatId
+        });
         console.log(Chats.find({ _id: this.chatId }, { userIds: {} }).fetch());
         this.helpers({
             messages() {
@@ -29,7 +34,11 @@ export default class ChatCtrl extends Controller {
     }
 
     sair() {
-        Chats.update(this.chatId, { $pull: { userIds: Meteor.user().username } });
+        //Chats.update(this.chatId, { $pull: { userIds: Meteor.user().username } });
+        this.callMethod('sairChat', {
+            usrName: Meteor.user().username,
+            chatId: this.chatId
+        });
         this.$state.go('tab.chats');
     }
 

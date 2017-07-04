@@ -15,7 +15,6 @@ export default class NewChatCtrl extends Controller {
 
     newChat() {
         console.log(Meteor.user());
-
         this.callMethod('newChat', Meteor.user()._id, this.chatnome, (err, chatId) => {
             this.hideNewChatModal();
             if (err) return this.handleError(err);
